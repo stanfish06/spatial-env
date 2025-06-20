@@ -40,6 +40,12 @@ Before running, do
 ```bash
 jupyter notebook stop 8888
 ```
+After activating the kernel
+```bash
+pip uninstall omnipath -y
+pip install --no-cache-dir git+https://github.com/saezlab/omnipath
+```
+see [issue](https://github.com/Lotfollahi-lab/nichecompass/issues/101)
 
 ### Option 1: Run with JupyterLab (Recommended)
 
