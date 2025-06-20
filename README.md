@@ -32,18 +32,13 @@ This will:
 
 ## Pull the Image directly
 ```bash
-docker pull stanfish06/stanfish06/spatial-env:v0.1.1
+docker pull stanfish06/stanfish06/spatial-env:0.1.2
 ```
 
 ## Running the Container
 Before running, do
 ```bash
 jupyter notebook stop 8888
-```
-After activating the kernel
-```bash
-pip uninstall omnipath -y
-pip install --no-cache-dir git+https://github.com/saezlab/omnipath
 ```
 see [issue](https://github.com/Lotfollahi-lab/nichecompass/issues/101)
 
@@ -52,7 +47,7 @@ see [issue](https://github.com/Lotfollahi-lab/nichecompass/issues/101)
 Start the container with JupyterLab server and mount your current directory:
 
 ```bash
-docker run -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.1
+docker run -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:0.1.2
 ```
 
 Then open your browser and go to: `http://localhost:8888`
@@ -62,7 +57,7 @@ Then open your browser and go to: `http://localhost:8888`
 Run the container in detached mode:
 
 ```bash
-docker run -d -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.1
+docker run -d -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:0.1.2
 ```
 
 ### Option 3: Interactive Shell
@@ -70,7 +65,7 @@ docker run -d -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-en
 If you want to access the container with a bash shell instead of starting JupyterLab:
 
 ```bash
-docker run -it -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.1 /bin/bash
+docker run -it -v $(pwd):/home/conda/workspace stanfish06/spatial-env:0.1.2 /bin/bash
 ```
 
 Then manually start JupyterLab if needed:
@@ -83,7 +78,7 @@ jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
 If you have NVIDIA GPUs and want to use them inside the container:
 
 ```bash
-docker run --gpus all -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.1
+docker run --gpus all -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:0.1.2
 ```
 
 ## Volume Mounting
