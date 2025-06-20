@@ -51,7 +51,8 @@ RUN /bin/bash -c "source /home/conda/miniconda3/bin/activate nichecompass && \
     pip install nichecompass[all] && \
     pip install squidpy jupyterlab"
 
-RUN /bin/bash -c "pip uninstall --yes omnipath && \
+RUN /bin/bash -c "source /home/conda/miniconda3/bin/activate nichecompass && \
+    pip uninstall --yes omnipath && \
     pip install --no-input --no-cache-dir git+https://github.com/saezlab/omnipath"
 
 # Activate the environment by default
