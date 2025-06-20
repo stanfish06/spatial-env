@@ -21,7 +21,7 @@ This Docker container provides a complete environment for spatial transcriptomic
 Build the Docker image from the directory containing both `Dockerfile` and `environment.yaml`:
 
 ```bash
-docker build -t spatial-env .
+docker build -t stanfish06/spatial-env .
 ```
 
 This will:
@@ -32,17 +32,21 @@ This will:
 
 ## Pull the Image directly
 ```bash
-docker pull stanfish06/spatial-env:v0.1.0
+docker pull stanfish06/stanfish06/spatial-env:v0.1.1
 ```
 
 ## Running the Container
+Before running, do
+```bash
+jupyter notebook stop 8888
+```
 
 ### Option 1: Run with JupyterLab (Recommended)
 
 Start the container with JupyterLab server and mount your current directory:
 
 ```bash
-docker run -p 8888:8888 -v $(pwd):/home/conda/workspace spatial-env:v0.1.0
+docker run -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.1
 ```
 
 Then open your browser and go to: `http://localhost:8888`
@@ -52,7 +56,7 @@ Then open your browser and go to: `http://localhost:8888`
 Run the container in detached mode:
 
 ```bash
-docker run -d -p 8888:8888 -v $(pwd):/home/conda/workspace spatial-env:v0.1.0
+docker run -d -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.1
 ```
 
 ### Option 3: Interactive Shell
@@ -60,7 +64,7 @@ docker run -d -p 8888:8888 -v $(pwd):/home/conda/workspace spatial-env:v0.1.0
 If you want to access the container with a bash shell instead of starting JupyterLab:
 
 ```bash
-docker run -it -v $(pwd):/home/conda/workspace spatial-env:v0.1.0 /bin/bash
+docker run -it -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.1 /bin/bash
 ```
 
 Then manually start JupyterLab if needed:
@@ -73,7 +77,7 @@ jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
 If you have NVIDIA GPUs and want to use them inside the container:
 
 ```bash
-docker run --gpus all -p 8888:8888 -v $(pwd):/home/conda/workspace spatial-env:v0.1.0
+docker run --gpus all -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.1
 ```
 
 ## Volume Mounting
@@ -144,4 +148,4 @@ In a jupyter notebook:
 To modify the environment:
 1. Edit the `environment.yaml` file to add/remove conda packages
 2. Modify the Dockerfile to add additional pip packages or system dependencies
-3. Rebuild the image: `docker build -t spatial-env .`
+3. Rebuild the image: `docker build -t stanfish06/spatial-env .`

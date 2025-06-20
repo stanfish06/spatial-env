@@ -47,9 +47,12 @@ RUN conda env create -f /home/conda/environment.yaml
 
 # Install jaxlib with CUDA support, squidpy, and jupyterlab in the nichecompass environment
 RUN /bin/bash -c "source /home/conda/miniconda3/bin/activate nichecompass && \
-    pip install jaxlib==0.4.7+cuda11.cudnn86 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html && \
-    pip install nichecompass[all] && \
-    pip install squidpy jupyterlab omnipath"
+    pip install  jaxlib==0.4.7+cuda11.cudnn86 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html && \
+    pip install  nichecompass[all] && \
+    pip install  squidpy jupyterlab"
+
+RUN /bin/bash -c "pip uninstall --yes omnipath && \
+    pip install --no-input omnipath"
 
 # Activate the environment by default
 RUN echo "conda activate nichecompass" >> /home/conda/.bashrc
