@@ -78,7 +78,7 @@ jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
 If you have NVIDIA GPUs and want to use them inside the container:
 
 ```bash
-docker run --gpus all -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:0.1.2
+docker run --gpus all -p 8888:8888 -v $(pwd):/home/conda/workspace stanfish06/spatial-env:v0.1.2
 ```
 
 ## Volume Mounting
@@ -127,6 +127,7 @@ docker stop $(docker ps -q)
 In a jupyter notebook:
 - select existing jupyter server
 - input url (e.g. http://127.0.0.1:8888/lab) and token (e.g. 012ee585c5982ea95f8a0941df84986ab723e0622732b129)
+- use `-e DISPLAY=host.docker.internal:0.0` on windows after installing vcxsrv to forward container display to windows (this makes plotting more stable)
 
 ## Troubleshooting
 
